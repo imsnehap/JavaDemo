@@ -6,4 +6,4 @@
 
 # Log file
 *.log
-out
+/out/
