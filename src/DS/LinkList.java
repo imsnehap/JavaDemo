@@ -153,6 +153,7 @@ public class LinkList {
         head.next = null;
         head = prevNode;
     }
+
     private Node reverseLLRecursive(Node head) {
         if (head == null || head.next == null) {
             return head;
@@ -163,14 +164,64 @@ public class LinkList {
         return newHead;
     }
 
+    public boolean palindromeCheck() {
+
+        Node original = head;
+        Node compareNode = head;
+        int size = 0;
+        int incrementer = 0;
+        boolean isPalindrome = true;
+
+        while (compareNode.next != null) {
+            size++;
+            compareNode = compareNode.next;
+        }
+
+        while (original.next != null) {
+            if (incrementer == size || incrementer > size) {
+                break;
+            }
+            Node node = decreaseNode(size);
+            if (node.data != original.data) {
+                isPalindrome = false;
+                break;
+            }
+            incrementer++;
+            size--;
+            original = original.next;
+
+        }
+
+        return isPalindrome;
+
+
+    }
+
+    public Node decreaseNode(int maxEnd) {
+        int cnt = 0;
+        Node compareNode = head;
+        while (compareNode.next != null) {
+            if (maxEnd == cnt) {
+                break;
+            }
+            compareNode = compareNode.next;
+            cnt++;
+        }
+        return compareNode;
+    }
+
 
     public static void main(String[] args) {
 
         LinkList ll = new LinkList();
-        ll.addFirst("a");
-        ll.addLast("b");
-        ll.addLast("c");
+        ll.addFirst("1");
+        ll.addLast("4");
+        ll.addLast("4");
+        ll.addLast("1");
+
         ll.printList();
+        var isPalindrome = ll.palindromeCheck();
+        System.out.println("Is LL palindrome " + isPalindrome);
         ll.reverseLL();
         ll.printList();
 
