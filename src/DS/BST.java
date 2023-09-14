@@ -50,13 +50,18 @@ public class BST {
             } else if (root.data < val) {
                 root.right = delete(root.right, val);
             } else {
+                //we have found the node
+                //Case 1 : left and right child is null
                 if (root.left == null && root.right == null) {
                     return null;
+                //Case 2:  left or right child is null
                 } else if (root.left == null) {
                     return root.right;
                 } else if (root.right == null) {
                     return root.left;
-                } else {
+                }
+                //Case 3: left and right child is exits
+                else {
                     Node IS = inOrderSuccesser(root.right);
                     root.data = IS.data;
                     root.right = delete(root.right, IS.data);
@@ -66,6 +71,11 @@ public class BST {
         }
 
         private static Node inOrderSuccesser(Node node) {
+            /*if(node.left == null){
+                return node;
+            }
+            inOrderSuccesser(node.left)
+            */
 
             while (node.left != null) {
                 node = node.left;

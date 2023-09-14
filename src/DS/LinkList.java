@@ -123,19 +123,15 @@ public class LinkList {
         }
 
         Node currentNode = head;
-        // boolean found = false;
         while (currentNode.next != null) {
             if (currentNode.next.data == data) {
-                //found = true;
+                currentNode.next = currentNode.next.next;
+                size--;
                 break;
             }
             currentNode = currentNode.next;
         }
-        // if(found)
-        if (currentNode.next != null) {
-            currentNode.next = currentNode.next.next;
-            size--;
-        }
+
     }
 
     private void reverseLL() {
@@ -220,6 +216,9 @@ public class LinkList {
         ll.addLast("1");
 
         ll.printList();
+        ll.delete("4");
+        ll.printList();
+
         var isPalindrome = ll.palindromeCheck();
         System.out.println("Is LL palindrome " + isPalindrome);
         ll.reverseLL();
