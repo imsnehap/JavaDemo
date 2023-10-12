@@ -14,17 +14,16 @@ public class BST {
         private static Node insert(Node root, int val) {
             if (root == null) {
                 root = new Node(val);
-                System.out.print("\nRootNode null:: " + root.data);
+                System.out.println("Root in call stack1::"+root.data);
+
                 return root;
             }
             if (val < root.data) {
-                System.out.print("\nleft:: " + root.data);
                 root.left = insert(root.left, val);
             } else {
-                System.out.print("\nright:: " + root.data);
                 root.right = insert(root.right, val);
             }
-            System.out.print("\n RootNode:: " + root.data);
+            System.out.println("Root in call stack::"+root.data);
             return root;
         }
 
@@ -93,19 +92,25 @@ public class BST {
         }
 
         public static void main(String args[]) {
-            int[] values = {5, 1, 3, 4, 6, 8, 7};
+           // int[] values = {5, 1, 3, 4, 6, 8, 7};
+            int[] values = {5,4,3,2,1};
+
             Node root = null;
 
             for (int i = 0; i < values.length; i++) {
-                System.out.print("\n Insert started ==> " + values[i]);
+              //  System.out.print("\n Insert started ==> " + values[i]);
                 root = insert(root, values[i]);
             }
             System.out.println();
 
             inOrderTraveser(root);
-            delete(root, 9);
+           // delete(root, 8);
             System.out.println();
-            inOrderTraveser(root);
+           // inOrderTraveser(root);
+
+
+
+
 
         }
     }
