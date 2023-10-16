@@ -3,10 +3,17 @@ import java.util.List;
 import java.util.function.BiFunction;
 
 
-@FunctionalInterface
-interface CheckPerson {
-    boolean test(Person p);
+interface CheckPerson2 {
+    boolean test2(Person p);
 
+    default boolean test22(Person p) {
+        return false;
+    }
+}
+
+@FunctionalInterface
+interface CheckPerson  extends CheckPerson2{
+    boolean test(Person p);
     default boolean test2(Person p) {
         return false;
     }
